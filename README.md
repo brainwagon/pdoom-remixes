@@ -4,7 +4,7 @@ A static, self-updating index of remixes, covers and alternate renditions of the
 song **"I'm Upping My P(doom)"** (lyrics by [osmarks](https://docs.osmarks.net/hypha/p%28doom%29_song_objectively_correct_interpretation),
 opening verse/chorus by MusicPerson, original generated with Udio, November 2024).
 
-- **Live site:** https://brainwagon.github.io/pdoom-remixes/
+- **Live site:** https://mvandewettering.com/pdoom-remixes/ (also https://brainwagon.github.io/pdoom-remixes/)
 - **Raw data:** `data/videos.json` (served as `videos.json` on the site)
 
 ## How it works
