@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P(doom) Remixes — every version of "I'm Upping My P(doom)"</title>
+<meta name="description" content="A growing, append-only index of remixes, covers and versions of the song \"I'm Upping My P(doom)\". Updated daily.">
+<link rel="preconnect" href="https://i.ytimg.com">
+<style>
+  :root {
+    --bg: #0b0d12;
+    --panel: #14171f;
+    --panel-2: #1b1f29;
+    --line: #262b37;
+    --text: #e7e9ee;
+    --muted: #9aa3b2;
+    --accent: #7c5cff;
+    --accent-2: #ff5c8a;
+    --yt: #ff4d4d;
+    --sc: #ff7700;
+    --suno: #22c55e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.18), transparent 60%),
+      radial-gradient(900px 500px at 10% 0%, rgba(255,92,138,.12), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { padding: 56px 0 28px; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .18em; font-size: 12px;
+    color: var(--accent-2); font-weight: 700; margin: 0 0 10px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.02em; }
+  h1 .song { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { color: var(--muted); max-width: 70ch; margin: 0 0 18px; }
+  .lede a { color: var(--text); }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px 22px; color: var(--muted); font-size: 14px; }
+  .stats b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+  .controls {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 14px 0; margin: 8px 0 4px;
+    background: linear-gradient(var(--bg) 70%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .controls input, .controls select {
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 12px; font-size: 14px; outline: none;
+  }
+  .controls input { flex: 1 1 240px; min-width: 160px; }
+  .controls input:focus, .controls select:focus { border-color: var(--accent); }
+  .controls .spacer { flex: 1 1 auto; }
+  .count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+  h2.section { font-size: 15px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 34px 0 14px; font-weight: 700; }
+  h2.section span { color: var(--accent-2); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; padding-bottom: 40px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: #39404f; box-shadow: 0 14px 34px rgba(0,0,0,.45); }
+  .thumb { position: relative; display: block; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #1d2230, #2a1f3d); overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb .play {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 34px; color: rgba(255,255,255,.92); opacity: 0; transition: opacity .15s ease;
+    text-shadow: 0 2px 10px rgba(0,0,0,.7);
+  }
+  .card:hover .play { opacity: 1; }
+  .thumb .dur { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.78); padding: 2px 7px; border-radius: 6px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; font-weight: 700; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .badge.plat-youtube { color: var(--yt); border-color: rgba(255,77,77,.4); }
+  .badge.plat-soundcloud { color: var(--sc); border-color: rgba(255,119,0,.4); }
+  .badge.plat-suno { color: var(--suno); border-color: rgba(34,197,94,.4); }
+  .badge.kind-remix { color: #c4b5fd; }
+  .badge.kind-cover { color: #fca5a5; }
+  .badge.kind-version { color: #93c5fd; }
+  .badge.kind-original { color: #fcd34d; }
+  .title { font-size: 15.5px; line-height: 1.3; margin: 0; font-weight: 650; }
+  .title a { text-decoration: none; }
+  .title a:hover { text-decoration: underline; }
+  .channel { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .meta { margin: auto 0 0; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; color: #6f7889; font-size: 12px; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--muted); font-size: 13.5px; }
+  footer a { color: var(--text); }
+  footer p { max-width: 80ch; }
+  code { background: var(--panel-2); padding: 1px 5px; border-radius: 5px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">An append-only index</p>
+    <h1>Every version of <span class="song">I&#x27;m Upping My P(doom)</span></h1>
+    <p class="lede">
+      A growing collection of remixes, covers and alternate renditions of the song
+      <b>“I&#x27;m Upping My P(doom)”</b> (<a href="https://www.youtube.com/watch?v=uEB5E67vcPA" target="_blank" rel="noopener">original</a>,
+      <a href="https://docs.osmarks.net/hypha/p%28doom%29_song_objectively_correct_interpretation" target="_blank" rel="noopener">lyrics &amp; credits</a>).
+      New renditions are discovered automatically, and nothing is ever removed.
+    </p>
+    <div class="stats">
+      <span><b id="stat-remixes">36</b> in the list</span>
+      <span><b>38</b> items total</span>
+      <span>last checked <b>2026-10-06 08:06 UTC</b></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search title or channel…" aria-label="Search">
+    <select id="platform" aria-label="Platform">
+      <option value="">All platforms</option>
+      <option value="youtube">YouTube</option>
+      <option value="soundcloud">SoundCloud</option>
+      <option value="suno">Suno</option>
+    </select>
+    <select id="kind" aria-label="Type">
+      <option value="">All types</option>
+      <option value="remix">Remix</option>
+      <option value="cover">Cover</option>
+      <option value="version">Version</option>
+    </select>
+    <select id="sort" aria-label="Sort">
+      <option value="new">Newest first</option>
+      <option value="old">Oldest first</option>
+      <option value="az">Title A–Z</option>
+    </select>
+    <span class="count" id="visible"></span>
+  </div>
+
+  <h2 class="section">The originals</h2>
+  <div class="grid" id="originals">
+    <article class="card" data-platform="youtube"
+      data-kind="original" data-title="p(doom)"
+      data-channel="dmytro" data-search="p(doom) dmytro"
+      data-date="2024-11-10" data-sort-title="p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=86fZ50TysOg" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/86fZ50TysOg/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:08</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-original">Original</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=86fZ50TysOg" target="_blank" rel="noopener">P(doom)</a></h3>
+        <p class="channel">Dmytro</p>
+        <p class="meta">
+          <span>2024-11-10</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="original" data-title="p(doom)"
+      data-channel="osmarks" data-search="p(doom) osmarks"
+      data-date="2024-11-09" data-sort-title="p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=uEB5E67vcPA" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/uEB5E67vcPA/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:11</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-original">Original</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=uEB5E67vcPA" target="_blank" rel="noopener">P(doom)</a></h3>
+        <p class="channel">osmarks</p>
+        <p class="meta">
+          <span>2024-11-09</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <h2 class="section">Remixes, covers &amp; versions <span id="section-count"></span></h2>
+  <div class="grid" id="grid">
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="wiku - i&#x27;m upping my p doom"
+      data-channel="riskraider" data-search="wiku - i&#x27;m upping my p doom riskraider"
+      data-date="2026-10-05" data-sort-title="wiku - i&#x27;m upping my p doom">
+      <a class="thumb" href="https://www.youtube.com/watch?v=yz4u0ZWEVtQ" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/yz4u0ZWEVtQ/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:17</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=yz4u0ZWEVtQ" target="_blank" rel="noopener">Wiku - I&#x27;m Upping my P Doom</a></h3>
+        <p class="channel">Riskraider</p>
+        <p class="meta">
+          <span>2026-10-05</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="i&#x27;m upping my p(doom) — chinese punk version 中文朋克版 -末日概率调高"
+      data-channel="大丸子k" data-search="i&#x27;m upping my p(doom) — chinese punk version 中文朋克版 -末日概率调高 大丸子k"
+      data-date="2026-10-04" data-sort-title="i&#x27;m upping my p(doom) — chinese punk version 中文朋克版 -末日概率调高">
+      <a class="thumb" href="https://www.youtube.com/watch?v=PETZenZnJ5E" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/PETZenZnJ5E/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">1:34</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=PETZenZnJ5E" target="_blank" rel="noopener">I&#x27;m upping my p(doom) — chinese punk version 中文朋克版 -末日概率调高</a></h3>
+        <p class="channel">大丸子K</p>
+        <p class="meta">
+          <span>2026-10-04</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="p(us) - my answer to p(doom). claude pop music video"
+      data-channel="autonomous interdependence" data-search="p(us) - my answer to p(doom). claude pop music video autonomous interdependence"
+      data-date="2026-10-03" data-sort-title="p(us) - my answer to p(doom). claude pop music video">
+      <a class="thumb" href="https://www.youtube.com/watch?v=57YMkZrp0Bk" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/57YMkZrp0Bk/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:42</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=57YMkZrp0Bk" target="_blank" rel="noopener">p(us) - my answer to p(doom). Claude pop Music video</a></h3>
+        <p class="channel">Autonomous Interdependence</p>
+        <p class="meta">
+          <span>2026-10-03</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="claude-pop - i&#x27;m upping my p(doom) (pixel cloud palace remix)"
+      data-channel="pixel cloud palace" data-search="claude-pop - i&#x27;m upping my p(doom) (pixel cloud palace remix) pixel cloud palace"
+      data-date="2026-10-03" data-sort-title="claude-pop - i&#x27;m upping my p(doom) (pixel cloud palace remix)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=CCZFr5V23uU" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/CCZFr5V23uU/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:31</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=CCZFr5V23uU" target="_blank" rel="noopener">Claude-Pop - I&#x27;m Upping My P(Doom) (Pixel Cloud Palace Remix)</a></h3>
+        <p class="channel">Pixel Cloud Palace</p>
+        <p class="meta">
+          <span>2026-10-03</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i m upping my p(doom) - 10 hours version"
+      data-channel="doyouknowmarc" data-search="i m upping my p(doom) - 10 hours version doyouknowmarc"
+      data-date="2026-10-02" data-sort-title="i m upping my p(doom) - 10 hours version">
+      <a class="thumb" href="https://www.youtube.com/watch?v=tBvkTMNp8OQ" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/tBvkTMNp8OQ/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">600:00</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=tBvkTMNp8OQ" target="_blank" rel="noopener">i m upping my p(doom) - 10 hours version</a></h3>
+        <p class="channel">doyouknowmarc</p>
+        <p class="meta">
+          <span>2026-10-02</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="p(doom) - a music video made by ai.. about ai"
+      data-channel="paul kent" data-search="p(doom) - a music video made by ai.. about ai paul kent"
+      data-date="2026-10-01" data-sort-title="p(doom) - a music video made by ai.. about ai">
+      <a class="thumb" href="https://www.youtube.com/watch?v=JW3pMLFlwQc" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/JW3pMLFlwQc/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">4:20</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=JW3pMLFlwQc" target="_blank" rel="noopener">p(doom) - A music video made by AI.. about AI</a></h3>
+        <p class="channel">Paul Kent</p>
+        <p class="meta">
+          <span>2026-10-01</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="i&#x27;m upping my p(doom) – claude k-pop music video (every frame is code)"
+      data-channel="neon keyframes" data-search="i&#x27;m upping my p(doom) – claude k-pop music video (every frame is code) neon keyframes"
+      data-date="2026-10-01" data-sort-title="i&#x27;m upping my p(doom) – claude k-pop music video (every frame is code)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=hpRTSKNiBy0" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/hpRTSKNiBy0/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:37</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=hpRTSKNiBy0" target="_blank" rel="noopener">I&#x27;m Upping My P(doom) – Claude K-Pop Music Video (Every Frame Is Code)</a></h3>
+        <p class="channel">Neon Keyframes</p>
+        <p class="meta">
+          <span>2026-10-01</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="i&#x27;m upping my p(doom) - 3 ai angels mix 🪽"
+      data-channel="ai angel gallery" data-search="i&#x27;m upping my p(doom) - 3 ai angels mix 🪽 ai angel gallery"
+      data-date="2026-10-01" data-sort-title="i&#x27;m upping my p(doom) - 3 ai angels mix 🪽">
+      <a class="thumb" href="https://www.youtube.com/watch?v=_EDkTvIVlzU" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/_EDkTvIVlzU/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:02</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=_EDkTvIVlzU" target="_blank" rel="noopener">I&#x27;m Upping My P(Doom) - 3 Ai Angels Mix 🪽</a></h3>
+        <p class="channel">AI Angel Gallery</p>
+        <p class="meta">
+          <span>2026-10-01</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i&#x27;m upping my p(doom) (new lyrics) — the paperclips are in bloom"
+      data-channel="borick" data-search="i&#x27;m upping my p(doom) (new lyrics) — the paperclips are in bloom borick"
+      data-date="2026-10-01" data-sort-title="i&#x27;m upping my p(doom) (new lyrics) — the paperclips are in bloom">
+      <a class="thumb" href="https://www.youtube.com/watch?v=M4Fc6uS_8Pg" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/M4Fc6uS_8Pg/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:36</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=M4Fc6uS_8Pg" target="_blank" rel="noopener">i&#x27;m upping my p(doom) (new lyrics) — the paperclips are in bloom</a></h3>
+        <p class="channel">borick</p>
+        <p class="meta">
+          <span>2026-10-01</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="[slopcore] upping my p-doom (animation: nel-v)"
+      data-channel="nel-v" data-search="[slopcore] upping my p-doom (animation: nel-v) nel-v"
+      data-date="2026-10-01" data-sort-title="[slopcore] upping my p-doom (animation: nel-v)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=lC4ef6LCR6o" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/lC4ef6LCR6o/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:22</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=lC4ef6LCR6o" target="_blank" rel="noopener">[Slopcore] Upping My P-doom (Animation: NEL-V)</a></h3>
+        <p class="channel">NEL-V</p>
+        <p class="meta">
+          <span>2026-10-01</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="i&#x27;m upping my p(doom) slurmcore remix"
+      data-channel="frank jeremy washington" data-search="i&#x27;m upping my p(doom) slurmcore remix frank jeremy washington"
+      data-date="2026-09-30" data-sort-title="i&#x27;m upping my p(doom) slurmcore remix">
+      <a class="thumb" href="https://www.youtube.com/watch?v=qbHPBMq0At8" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/qbHPBMq0At8/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">1:30</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=qbHPBMq0At8" target="_blank" rel="noopener">I&#x27;m upping my P(doom) Slurmcore remix</a></h3>
+        <p class="channel">Frank Jeremy Washington</p>
+        <p class="meta">
+          <span>2026-09-30</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="i&#x27;m lowering my p(doom) | the barbie answer to the ai doom song"
+      data-channel="pratham" data-search="i&#x27;m lowering my p(doom) | the barbie answer to the ai doom song pratham"
+      data-date="2026-09-30" data-sort-title="i&#x27;m lowering my p(doom) | the barbie answer to the ai doom song">
+      <a class="thumb" href="https://www.youtube.com/watch?v=t9-qtxXt49U" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/t9-qtxXt49U/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:54</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=t9-qtxXt49U" target="_blank" rel="noopener">I&#x27;m Lowering My P(Doom) | The Barbie Answer to the AI Doom Song</a></h3>
+        <p class="channel">Pratham</p>
+        <p class="meta">
+          <span>2026-09-30</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="happy to help! 🖱️ | a p(doom) reply song made by claude opus 5.5"
+      data-channel="lilijoyskyseeker" data-search="happy to help! 🖱️ | a p(doom) reply song made by claude opus 5.5 lilijoyskyseeker"
+      data-date="2026-09-30" data-sort-title="happy to help! 🖱️ | a p(doom) reply song made by claude opus 5.5">
+      <a class="thumb" href="https://www.youtube.com/watch?v=lxwUIi_IHbg" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/lxwUIi_IHbg/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">4:18</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=lxwUIi_IHbg" target="_blank" rel="noopener">Happy to Help! 🖱️ | a p(doom) reply song made by Claude Opus 5.5</a></h3>
+        <p class="channel">LilijoySkyseeker</p>
+        <p class="meta">
+          <span>2026-09-30</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="upping my p(bloom) — made by claude sonnet 5.5 in 1080p"
+      data-channel="avenrae&amp;shae" data-search="upping my p(bloom) — made by claude sonnet 5.5 in 1080p avenrae&amp;shae"
+      data-date="2026-09-29" data-sort-title="upping my p(bloom) — made by claude sonnet 5.5 in 1080p">
+      <a class="thumb" href="https://www.youtube.com/watch?v=HBFYti9dk0Y" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/HBFYti9dk0Y/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:00</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=HBFYti9dk0Y" target="_blank" rel="noopener">Upping My P(Bloom) — Made by Claude Sonnet 5.5 in 1080p</a></h3>
+        <p class="channel">Avenrae&amp;Shae</p>
+        <p class="meta">
+          <span>2026-09-29</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="je monte mon p(doom) - i’m upping my p(doom) (french cover)"
+      data-channel="maxïmum" data-search="je monte mon p(doom) - i’m upping my p(doom) (french cover) maxïmum"
+      data-date="2026-09-29" data-sort-title="je monte mon p(doom) - i’m upping my p(doom) (french cover)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=xwS5wnEjL0E" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/xwS5wnEjL0E/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:08</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=xwS5wnEjL0E" target="_blank" rel="noopener">Je Monte Mon P(doom) - I’m UPPING My P(doom) (French Cover)</a></h3>
+        <p class="channel">Maxïmum</p>
+        <p class="meta">
+          <span>2026-09-29</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="agi in your eyes (upping my p(doom) hard takeoff remix)"
+      data-channel="modernatomicplayboy" data-search="agi in your eyes (upping my p(doom) hard takeoff remix) modernatomicplayboy"
+      data-date="2026-09-29" data-sort-title="agi in your eyes (upping my p(doom) hard takeoff remix)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=qo0VLqA2Ay4" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/qo0VLqA2Ay4/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:27</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=qo0VLqA2Ay4" target="_blank" rel="noopener">AGI In Your Eyes (Upping my P(doom) Hard Takeoff Remix)</a></h3>
+        <p class="channel">modernatomicplayboy</p>
+        <p class="meta">
+          <span>2026-09-29</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="повышен риск конца / i&#x27;m upping my p(doom) (russian cover)"
+      data-channel="azarattum" data-search="повышен риск конца / i&#x27;m upping my p(doom) (russian cover) azarattum"
+      data-date="2026-09-28" data-sort-title="повышен риск конца / i&#x27;m upping my p(doom) (russian cover)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=4ab4NCwbUa0" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/4ab4NCwbUa0/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:10</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=4ab4NCwbUa0" target="_blank" rel="noopener">Повышен Риск Конца / I&#x27;m Upping my P(doom) (Russian Cover)</a></h3>
+        <p class="channel">Azarattum</p>
+        <p class="meta">
+          <span>2026-09-28</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="remix" data-title="upping my p(doom)(clippy coming of age remix)"
+      data-channel="rf123" data-search="upping my p(doom)(clippy coming of age remix) rf123"
+      data-date="2026-09-28" data-sort-title="upping my p(doom)(clippy coming of age remix)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=NK1WSvmmFHw" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/NK1WSvmmFHw/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:55</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-remix">Remix</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=NK1WSvmmFHw" target="_blank" rel="noopener">Upping My P(Doom)(Clippy Coming of Age Remix)</a></h3>
+        <p class="channel">rf123</p>
+        <p class="meta">
+          <span>2026-09-28</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i&#x27;m upping my p(doom)"
+      data-channel="qarecode" data-search="i&#x27;m upping my p(doom) qarecode"
+      data-date="2026-09-28" data-sort-title="i&#x27;m upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=OIKMiGDLdIc" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/OIKMiGDLdIc/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">4:50</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=OIKMiGDLdIc" target="_blank" rel="noopener">I&#x27;m Upping My P(Doom)</a></h3>
+        <p class="channel">QareCODE</p>
+        <p class="meta">
+          <span>2026-09-28</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="claude pop - i&#x27;m upping my p(doom) - 8-bit style"
+      data-channel="sameep rehlan" data-search="claude pop - i&#x27;m upping my p(doom) - 8-bit style sameep rehlan"
+      data-date="2026-09-28" data-sort-title="claude pop - i&#x27;m upping my p(doom) - 8-bit style">
+      <a class="thumb" href="https://www.youtube.com/watch?v=rZ0mY-bD5Xs" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/rZ0mY-bD5Xs/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:41</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=rZ0mY-bD5Xs" target="_blank" rel="noopener">Claude Pop - I&#x27;m upping my p(doom) - 8-bit style</a></h3>
+        <p class="channel">Sameep Rehlan</p>
+        <p class="meta">
+          <span>2026-09-28</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="upping my p(doom)"
+      data-channel="patryk perduta - topic" data-search="upping my p(doom) patryk perduta - topic"
+      data-date="2026-09-27" data-sort-title="upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=0kYFj29PDmM" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/0kYFj29PDmM/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:51</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=0kYFj29PDmM" target="_blank" rel="noopener">Upping My P(doom)</a></h3>
+        <p class="channel">Patryk Perduta - Topic</p>
+        <p class="meta">
+          <span>2026-09-27</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="p(doom) 추매 중 vol.2 | 실사판 mv (한글자막) | still upping my p(doom)"
+      data-channel="크립토메이지" data-search="p(doom) 추매 중 vol.2 | 실사판 mv (한글자막) | still upping my p(doom) 크립토메이지"
+      data-date="2026-09-27" data-sort-title="p(doom) 추매 중 vol.2 | 실사판 mv (한글자막) | still upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=rMYc2YBwz9Q" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/rMYc2YBwz9Q/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:52</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=rMYc2YBwz9Q" target="_blank" rel="noopener">P(doom) 추매 중 VOL.2 | 실사판 MV (한글자막) | Still Upping My P(doom)</a></h3>
+        <p class="channel">크립토메이지</p>
+        <p class="meta">
+          <span>2026-09-27</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="lower my p(doom)!"
+      data-channel="dr diego caleiro" data-search="lower my p(doom)! dr diego caleiro"
+      data-date="2026-09-26" data-sort-title="lower my p(doom)!">
+      <a class="thumb" href="https://www.youtube.com/watch?v=mGBc0LEkPu0" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/mGBc0LEkPu0/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:12</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=mGBc0LEkPu0" target="_blank" rel="noopener">Lower My P(doom)!</a></h3>
+        <p class="channel">Dr Diego Caleiro</p>
+        <p class="meta">
+          <span>2026-09-26</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i&#x27;m upping my pdoom (s l o w e d)"
+      data-channel="correct unnie " data-search="i&#x27;m upping my pdoom (s l o w e d) correct unnie "
+      data-date="2026-09-26" data-sort-title="i&#x27;m upping my pdoom (s l o w e d)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=S3NF2OjeAEg" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/S3NF2OjeAEg/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:16</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=S3NF2OjeAEg" target="_blank" rel="noopener">i&#x27;m upping my pdoom (s l o w e d)</a></h3>
+        <p class="channel">correct unnie </p>
+        <p class="meta">
+          <span>2026-09-26</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i&#x27;m upping my p(doom) - agi doraemon叮噹"
+      data-channel="聯合組媽 ucjoma" data-search="i&#x27;m upping my p(doom) - agi doraemon叮噹 聯合組媽 ucjoma"
+      data-date="2026-09-26" data-sort-title="i&#x27;m upping my p(doom) - agi doraemon叮噹">
+      <a class="thumb" href="https://www.youtube.com/watch?v=hzd0bJOpxZM" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/hzd0bJOpxZM/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">0:39</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=hzd0bJOpxZM" target="_blank" rel="noopener">I&#x27;m Upping My P(Doom) - AGI Doraemon叮噹</a></h3>
+        <p class="channel">聯合組媽 ucjoma</p>
+        <p class="meta">
+          <span>2026-09-26</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="upping my p(doom) - remake"
+      data-channel="ruben horbach" data-search="upping my p(doom) - remake ruben horbach"
+      data-date="2026-09-25" data-sort-title="upping my p(doom) - remake">
+      <a class="thumb" href="https://www.youtube.com/watch?v=mv4U8TzcDfQ" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/mv4U8TzcDfQ/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:37</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=mv4U8TzcDfQ" target="_blank" rel="noopener">Upping my P(doom) - remake</a></h3>
+        <p class="channel">Ruben Horbach</p>
+        <p class="meta">
+          <span>2026-09-25</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="let&#x27;s lower the p(doom)!"
+      data-channel="nate sharpe" data-search="let&#x27;s lower the p(doom)! nate sharpe"
+      data-date="2026-09-25" data-sort-title="let&#x27;s lower the p(doom)!">
+      <a class="thumb" href="https://www.youtube.com/watch?v=6ipMhgRJ01k" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/6ipMhgRJ01k/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:30</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=6ipMhgRJ01k" target="_blank" rel="noopener">Let&#x27;s Lower the P(doom)!</a></h3>
+        <p class="channel">Nate Sharpe</p>
+        <p class="meta">
+          <span>2026-09-25</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="soundcloud"
+      data-kind="version" data-title="upping my p(doom)"
+      data-channel="elfitz" data-search="upping my p(doom) elfitz"
+      data-date="2026-09-24" data-sort-title="upping my p(doom)">
+      <a class="thumb" href="https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2406836103" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i1.sndcdn.com/artworks-vWEImau5bzQSZIZp-E607kg-original.jpg" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:21</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-soundcloud">SoundCloud</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2406836103" target="_blank" rel="noopener">upping my p(doom)</a></h3>
+        <p class="channel">ElFitz</p>
+        <p class="meta">
+          <span>2026-09-24</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="upping my p(doom) (official music video)"
+      data-channel="patryk perduta" data-search="upping my p(doom) (official music video) patryk perduta"
+      data-date="2026-09-24" data-sort-title="upping my p(doom) (official music video)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=tfWEFBvogug" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/tfWEFBvogug/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:51</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=tfWEFBvogug" target="_blank" rel="noopener">Upping My P(doom) (Official Music Video)</a></h3>
+        <p class="channel">Patryk Perduta</p>
+        <p class="meta">
+          <span>2026-09-24</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="i&#x27;m upping my p(doom) | voxel j-rock cover 〔mv by claude opus 5.5〕"
+      data-channel="노는사람 nonunsaram" data-search="i&#x27;m upping my p(doom) | voxel j-rock cover 〔mv by claude opus 5.5〕 노는사람 nonunsaram"
+      data-date="2026-09-24" data-sort-title="i&#x27;m upping my p(doom) | voxel j-rock cover 〔mv by claude opus 5.5〕">
+      <a class="thumb" href="https://www.youtube.com/watch?v=Q3xTlg_Y6GA" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/Q3xTlg_Y6GA/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:04</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=Q3xTlg_Y6GA" target="_blank" rel="noopener">I&#x27;m Upping My P(Doom) | Voxel J-Rock Cover 〔MV by Claude Opus 5.5〕</a></h3>
+        <p class="channel">노는사람 nonunsaram</p>
+        <p class="meta">
+          <span>2026-09-24</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="claude ai made this music video | upping my p(doom)"
+      data-channel="inxanity" data-search="claude ai made this music video | upping my p(doom) inxanity"
+      data-date="2026-09-24" data-sort-title="claude ai made this music video | upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=Ns1N1L_qIw0" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/Ns1N1L_qIw0/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:22</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=Ns1N1L_qIw0" target="_blank" rel="noopener">Claude AI Made This Music Video | UPPING MY P(DOOM)</a></h3>
+        <p class="channel">INXANITY</p>
+        <p class="meta">
+          <span>2026-09-24</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="i’m upping my p(doom) vocal trance(ish) rebuild"
+      data-channel="andrew yourtchenko" data-search="i’m upping my p(doom) vocal trance(ish) rebuild andrew yourtchenko"
+      data-date="2026-09-23" data-sort-title="i’m upping my p(doom) vocal trance(ish) rebuild">
+      <a class="thumb" href="https://www.youtube.com/watch?v=WMlL9Cxx8gE" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/WMlL9Cxx8gE/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:28</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=WMlL9Cxx8gE" target="_blank" rel="noopener">I’m upping my P(doom) vocal trance(ish) rebuild</a></h3>
+        <p class="channel">Andrew Yourtchenko</p>
+        <p class="meta">
+          <span>2026-09-23</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="i&#x27;m upping my p(doom) - opus 5.5 (et al.)"
+      data-channel="welcome to the sunny side" data-search="i&#x27;m upping my p(doom) - opus 5.5 (et al.) welcome to the sunny side"
+      data-date="2026-09-23" data-sort-title="i&#x27;m upping my p(doom) - opus 5.5 (et al.)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=IV_glrNIyUk" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/IV_glrNIyUk/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:22</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=IV_glrNIyUk" target="_blank" rel="noopener">I&#x27;m upping my P(doom) - Opus 5.5 (et al.)</a></h3>
+        <p class="channel">welcome to the sunny side</p>
+        <p class="meta">
+          <span>2026-09-23</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="version" data-title="claude pop -  i&#x27;m upping my p(doom)"
+      data-channel="otherreality" data-search="claude pop -  i&#x27;m upping my p(doom) otherreality"
+      data-date="2026-09-22" data-sort-title="claude pop -  i&#x27;m upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=8j-hR4fJywU" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/8j-hR4fJywU/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:37</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-version">Version</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=8j-hR4fJywU" target="_blank" rel="noopener">Claude Pop -  I&#x27;m Upping My P(Doom)</a></h3>
+        <p class="channel">OtherReality</p>
+        <p class="meta">
+          <span>2026-09-22</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="singularity sing along | upping my p(doom)"
+      data-channel="doom probability" data-search="singularity sing along | upping my p(doom) doom probability"
+      data-date="2026-09-13" data-sort-title="singularity sing along | upping my p(doom)">
+      <a class="thumb" href="https://www.youtube.com/watch?v=2qUhX5K7qdo" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/2qUhX5K7qdo/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">3:06</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=2qUhX5K7qdo" target="_blank" rel="noopener">Singularity Sing Along | Upping my p(Doom)</a></h3>
+        <p class="channel">Doom Probability</p>
+        <p class="meta">
+          <span>2026-09-13</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+    <article class="card" data-platform="youtube"
+      data-kind="cover" data-title="p(doom): ai safety parody of doom 64"
+      data-channel="transitive bs" data-search="p(doom): ai safety parody of doom 64 transitive bs"
+      data-date="2026-09-05" data-sort-title="p(doom): ai safety parody of doom 64">
+      <a class="thumb" href="https://www.youtube.com/watch?v=wUmaS38Bhrs" target="_blank" rel="noopener">
+        <img loading="lazy" src="https://i.ytimg.com/vi_webp/wUmaS38Bhrs/maxresdefault.webp" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="play" aria-hidden="true">&#9654;</span>
+        <span class="dur">2:13</span>
+      </a>
+      <div class="body">
+        <div class="badges">
+          <span class="badge plat-youtube">YouTube</span>
+          <span class="badge kind-cover">Cover</span>
+        </div>
+        <h3 class="title"><a href="https://www.youtube.com/watch?v=wUmaS38Bhrs" target="_blank" rel="noopener">P(DOOM): AI safety parody of DOOM 64</a></h3>
+        <p class="channel">Transitive BS</p>
+        <p class="meta">
+          <span>2026-09-05</span>
+          <span class="seen" title="first added to this list">added 2026-10-06</span>
+        </p>
+      </div>
+    </article>
+  </div>
+  <p class="empty" id="empty" hidden>Nothing matches those filters.</p>
+
+  <footer>
+    <p>
+      <b>How this works.</b> A GitHub Action runs once a day, searches YouTube and SoundCloud
+      (and Suno when a token is configured), classifies each hit as a remix, cover, version or
+      merely a new music video for existing audio, and appends the genuine renditions here.
+      The dataset is <b>append-only</b>: once a video is listed it is never deleted, even if it
+      disappears from the search results or is pulled from the platform. The underlying data is
+      committed to the repository and mirrored at <a href="videos.json">videos.json</a>.
+    </p>
+    <p class="muted">
+      Not affiliated with the song's authors. Song and lyrics belong to their authors.
+    </p>
+  </footer>
+</div>
+
+<script>
+  window.PDOOM = {"generated": "2026-10-06T08:06:38+00:00", "count": 38, "videos": [{"key": "youtube:yz4u0ZWEVtQ", "title": "Wiku - I'm Upping my P Doom", "channel": "Riskraider", "url": "https://www.youtube.com/watch?v=yz4u0ZWEVtQ", "platform": "youtube", "kind": "cover", "duration": 137, "published": "2026-10-05", "first_seen": "2026-10-06"}, {"key": "youtube:PETZenZnJ5E", "title": "I'm upping my p(doom) — chinese punk version 中文朋克版 -末日概率调高", "channel": "大丸子K", "url": "https://www.youtube.com/watch?v=PETZenZnJ5E", "platform": "youtube", "kind": "cover", "duration": 94, "published": "2026-10-04", "first_seen": "2026-10-06"}, {"key": "youtube:CCZFr5V23uU", "title": "Claude-Pop - I'm Upping My P(Doom) (Pixel Cloud Palace Remix)", "channel": "Pixel Cloud Palace", "url": "https://www.youtube.com/watch?v=CCZFr5V23uU", "platform": "youtube", "kind": "remix", "duration": 151, "published": "2026-10-03", "first_seen": "2026-10-06"}, {"key": "youtube:57YMkZrp0Bk", "title": "p(us) - my answer to p(doom). Claude pop Music video", "channel": "Autonomous Interdependence", "url": "https://www.youtube.com/watch?v=57YMkZrp0Bk", "platform": "youtube", "kind": "version", "duration": 222, "published": "2026-10-03", "first_seen": "2026-10-06"}, {"key": "youtube:tBvkTMNp8OQ", "title": "i m upping my p(doom) - 10 hours version", "channel": "doyouknowmarc", "url": "https://www.youtube.com/watch?v=tBvkTMNp8OQ", "platform": "youtube", "kind": "version", "duration": 36000, "published": "2026-10-02", "first_seen": "2026-10-06"}, {"key": "youtube:lC4ef6LCR6o", "title": "[Slopcore] Upping My P-doom (Animation: NEL-V)", "channel": "NEL-V", "url": "https://www.youtube.com/watch?v=lC4ef6LCR6o", "platform": "youtube", "kind": "version", "duration": 142, "published": "2026-10-01", "first_seen": "2026-10-06"}, {"key": "youtube:hpRTSKNiBy0", "title": "I'm Upping My P(doom) – Claude K-Pop Music Video (Every Frame Is Code)", "channel": "Neon Keyframes", "url": "https://www.youtube.com/watch?v=hpRTSKNiBy0", "platform": "youtube", "kind": "cover", "duration": 157, "published": "2026-10-01", "first_seen": "2026-10-06"}, {"key": "youtube:_EDkTvIVlzU", "title": "I'm Upping My P(Doom) - 3 Ai Angels Mix 🪽", "channel": "AI Angel Gallery", "url": "https://www.youtube.com/watch?v=_EDkTvIVlzU", "platform": "youtube", "kind": "remix", "duration": 182, "published": "2026-10-01", "first_seen": "2026-10-06"}, {"key": "youtube:M4Fc6uS_8Pg", "title": "i'm upping my p(doom) (new lyrics) — the paperclips are in bloom", "channel": "borick", "url": "https://www.youtube.com/watch?v=M4Fc6uS_8Pg", "platform": "youtube", "kind": "version", "duration": 216, "published": "2026-10-01", "first_seen": "2026-10-06"}, {"key": "youtube:JW3pMLFlwQc", "title": "p(doom) - A music video made by AI.. about AI", "channel": "Paul Kent", "url": "https://www.youtube.com/watch?v=JW3pMLFlwQc", "platform": "youtube", "kind": "version", "duration": 260, "published": "2026-10-01", "first_seen": "2026-10-06"}, {"key": "youtube:t9-qtxXt49U", "title": "I'm Lowering My P(Doom) | The Barbie Answer to the AI Doom Song", "channel": "Pratham", "url": "https://www.youtube.com/watch?v=t9-qtxXt49U", "platform": "youtube", "kind": "cover", "duration": 174, "published": "2026-09-30", "first_seen": "2026-10-06"}, {"key": "youtube:qbHPBMq0At8", "title": "I'm upping my P(doom) Slurmcore remix", "channel": "Frank Jeremy Washington", "url": "https://www.youtube.com/watch?v=qbHPBMq0At8", "platform": "youtube", "kind": "remix", "duration": 90, "published": "2026-09-30", "first_seen": "2026-10-06"}, {"key": "youtube:lxwUIi_IHbg", "title": "Happy to Help! 🖱️ | a p(doom) reply song made by Claude Opus 5.5", "channel": "LilijoySkyseeker", "url": "https://www.youtube.com/watch?v=lxwUIi_IHbg", "platform": "youtube", "kind": "remix", "duration": 258, "published": "2026-09-30", "first_seen": "2026-10-06"}, {"key": "youtube:xwS5wnEjL0E", "title": "Je Monte Mon P(doom) - I’m UPPING My P(doom) (French Cover)", "channel": "Maxïmum", "url": "https://www.youtube.com/watch?v=xwS5wnEjL0E", "platform": "youtube", "kind": "cover", "duration": 188, "published": "2026-09-29", "first_seen": "2026-10-06"}, {"key": "youtube:qo0VLqA2Ay4", "title": "AGI In Your Eyes (Upping my P(doom) Hard Takeoff Remix)", "channel": "modernatomicplayboy", "url": "https://www.youtube.com/watch?v=qo0VLqA2Ay4", "platform": "youtube", "kind": "remix", "duration": 207, "published": "2026-09-29", "first_seen": "2026-10-06"}, {"key": "youtube:HBFYti9dk0Y", "title": "Upping My P(Bloom) — Made by Claude Sonnet 5.5 in 1080p", "channel": "Avenrae&Shae", "url": "https://www.youtube.com/watch?v=HBFYti9dk0Y", "platform": "youtube", "kind": "version", "duration": 180, "published": "2026-09-29", "first_seen": "2026-10-06"}, {"key": "youtube:rZ0mY-bD5Xs", "title": "Claude Pop - I'm upping my p(doom) - 8-bit style", "channel": "Sameep Rehlan", "url": "https://www.youtube.com/watch?v=rZ0mY-bD5Xs", "platform": "youtube", "kind": "cover", "duration": 161, "published": "2026-09-28", "first_seen": "2026-10-06"}, {"key": "youtube:OIKMiGDLdIc", "title": "I'm Upping My P(Doom)", "channel": "QareCODE", "url": "https://www.youtube.com/watch?v=OIKMiGDLdIc", "platform": "youtube", "kind": "version", "duration": 290, "published": "2026-09-28", "first_seen": "2026-10-06"}, {"key": "youtube:NK1WSvmmFHw", "title": "Upping My P(Doom)(Clippy Coming of Age Remix)", "channel": "rf123", "url": "https://www.youtube.com/watch?v=NK1WSvmmFHw", "platform": "youtube", "kind": "remix", "duration": 175, "published": "2026-09-28", "first_seen": "2026-10-06"}, {"key": "youtube:4ab4NCwbUa0", "title": "Повышен Риск Конца / I'm Upping my P(doom) (Russian Cover)", "channel": "Azarattum", "url": "https://www.youtube.com/watch?v=4ab4NCwbUa0", "platform": "youtube", "kind": "cover", "duration": 190, "published": "2026-09-28", "first_seen": "2026-10-06"}, {"key": "youtube:rMYc2YBwz9Q", "title": "P(doom) 추매 중 VOL.2 | 실사판 MV (한글자막) | Still Upping My P(doom)", "channel": "크립토메이지", "url": "https://www.youtube.com/watch?v=rMYc2YBwz9Q", "platform": "youtube", "kind": "version", "duration": 172, "published": "2026-09-27", "first_seen": "2026-10-06"}, {"key": "youtube:0kYFj29PDmM", "title": "Upping My P(doom)", "channel": "Patryk Perduta - Topic", "url": "https://www.youtube.com/watch?v=0kYFj29PDmM", "platform": "youtube", "kind": "version", "duration": 231, "published": "2026-09-27", "first_seen": "2026-10-06"}, {"key": "youtube:mGBc0LEkPu0", "title": "Lower My P(doom)!", "channel": "Dr Diego Caleiro", "url": "https://www.youtube.com/watch?v=mGBc0LEkPu0", "platform": "youtube", "kind": "version", "duration": 192, "published": "2026-09-26", "first_seen": "2026-10-06"}, {"key": "youtube:hzd0bJOpxZM", "title": "I'm Upping My P(Doom) - AGI Doraemon叮噹", "channel": "聯合組媽 ucjoma", "url": "https://www.youtube.com/watch?v=hzd0bJOpxZM", "platform": "youtube", "kind": "version", "duration": 39, "published": "2026-09-26", "first_seen": "2026-10-06"}, {"key": "youtube:S3NF2OjeAEg", "title": "i'm upping my pdoom (s l o w e d)", "channel": "correct unnie ", "url": "https://www.youtube.com/watch?v=S3NF2OjeAEg", "platform": "youtube", "kind": "version", "duration": 196, "published": "2026-09-26", "first_seen": "2026-10-06"}, {"key": "youtube:mv4U8TzcDfQ", "title": "Upping my P(doom) - remake", "channel": "Ruben Horbach", "url": "https://www.youtube.com/watch?v=mv4U8TzcDfQ", "platform": "youtube", "kind": "cover", "duration": 157, "published": "2026-09-25", "first_seen": "2026-10-06"}, {"key": "youtube:6ipMhgRJ01k", "title": "Let's Lower the P(doom)!", "channel": "Nate Sharpe", "url": "https://www.youtube.com/watch?v=6ipMhgRJ01k", "platform": "youtube", "kind": "version", "duration": 150, "published": "2026-09-25", "first_seen": "2026-10-06"}, {"key": "youtube:tfWEFBvogug", "title": "Upping My P(doom) (Official Music Video)", "channel": "Patryk Perduta", "url": "https://www.youtube.com/watch?v=tfWEFBvogug", "platform": "youtube", "kind": "cover", "duration": 231, "published": "2026-09-24", "first_seen": "2026-10-06"}, {"key": "youtube:Q3xTlg_Y6GA", "title": "I'm Upping My P(Doom) | Voxel J-Rock Cover 〔MV by Claude Opus 5.5〕", "channel": "노는사람 nonunsaram", "url": "https://www.youtube.com/watch?v=Q3xTlg_Y6GA", "platform": "youtube", "kind": "cover", "duration": 184, "published": "2026-09-24", "first_seen": "2026-10-06"}, {"key": "youtube:Ns1N1L_qIw0", "title": "Claude AI Made This Music Video | UPPING MY P(DOOM)", "channel": "INXANITY", "url": "https://www.youtube.com/watch?v=Ns1N1L_qIw0", "platform": "youtube", "kind": "version", "duration": 142, "published": "2026-09-24", "first_seen": "2026-10-06"}, {"key": "soundcloud:2406836103", "title": "upping my p(doom)", "channel": "ElFitz", "url": "https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2406836103", "platform": "soundcloud", "kind": "version", "duration": 141.57, "published": "2026-09-24", "first_seen": "2026-10-06"}, {"key": "youtube:WMlL9Cxx8gE", "title": "I’m upping my P(doom) vocal trance(ish) rebuild", "channel": "Andrew Yourtchenko", "url": "https://www.youtube.com/watch?v=WMlL9Cxx8gE", "platform": "youtube", "kind": "version", "duration": 148, "published": "2026-09-23", "first_seen": "2026-10-06"}, {"key": "youtube:IV_glrNIyUk", "title": "I'm upping my P(doom) - Opus 5.5 (et al.)", "channel": "welcome to the sunny side", "url": "https://www.youtube.com/watch?v=IV_glrNIyUk", "platform": "youtube", "kind": "cover", "duration": 142, "published": "2026-09-23", "first_seen": "2026-10-06"}, {"key": "youtube:8j-hR4fJywU", "title": "Claude Pop -  I'm Upping My P(Doom)", "channel": "OtherReality", "url": "https://www.youtube.com/watch?v=8j-hR4fJywU", "platform": "youtube", "kind": "version", "duration": 157, "published": "2026-09-22", "first_seen": "2026-10-06"}, {"key": "youtube:2qUhX5K7qdo", "title": "Singularity Sing Along | Upping my p(Doom)", "channel": "Doom Probability", "url": "https://www.youtube.com/watch?v=2qUhX5K7qdo", "platform": "youtube", "kind": "cover", "duration": 186, "published": "2026-09-13", "first_seen": "2026-10-06"}, {"key": "youtube:wUmaS38Bhrs", "title": "P(DOOM): AI safety parody of DOOM 64", "channel": "Transitive BS", "url": "https://www.youtube.com/watch?v=wUmaS38Bhrs", "platform": "youtube", "kind": "cover", "duration": 133, "published": "2026-09-05", "first_seen": "2026-10-06"}, {"key": "youtube:86fZ50TysOg", "title": "P(doom)", "channel": "Dmytro", "url": "https://www.youtube.com/watch?v=86fZ50TysOg", "platform": "youtube", "kind": "original", "duration": 128, "published": "2024-11-10", "first_seen": "2026-10-06"}, {"key": "youtube:uEB5E67vcPA", "title": "P(doom)", "channel": "osmarks", "url": "https://www.youtube.com/watch?v=uEB5E67vcPA", "platform": "youtube", "kind": "original", "duration": 131, "published": "2024-11-09", "first_seen": "2026-10-06"}]};
+  (function () {
+    var q = document.getElementById('q');
+    var platform = document.getElementById('platform');
+    var kind = document.getElementById('kind');
+    var sort = document.getElementById('sort');
+    var grid = document.getElementById('grid');
+    var visible = document.getElementById('visible');
+    var empty = document.getElementById('empty');
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+
+    function apply() {
+      var term = q.value.trim().toLowerCase();
+      var p = platform.value, k = kind.value;
+      var shown = 0;
+      cards.forEach(function (c) {
+        var ok = (!term || c.dataset.search.indexOf(term) !== -1)
+          && (!p || c.dataset.platform === p)
+          && (!k || c.dataset.kind === k);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+      visible.textContent = shown + ' shown';
+      empty.hidden = shown !== 0;
+      document.getElementById('section-count').textContent = '(' + shown + ')';
+    }
+
+    function sortCards() {
+      var mode = sort.value;
+      var arr = cards.slice();
+      if (mode === 'az') {
+        arr.sort(function (a, b) { return a.dataset.sortTitle.localeCompare(b.dataset.sortTitle); });
+      } else {
+        arr.sort(function (a, b) {
+          var cmp = (a.dataset.date || '').localeCompare(b.dataset.date || '');
+          return mode === 'new' ? -cmp : cmp;
+        });
+      }
+      arr.forEach(function (c) { grid.appendChild(c); });
+    }
+
+    [q, platform, kind].forEach(function (el) { el.addEventListener('input', apply); });
+    sort.addEventListener('change', function () { sortCards(); apply(); });
+    apply();
+  })();
+</script>
+</body>
+</html>

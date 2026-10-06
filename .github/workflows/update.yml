@@ -1,0 +1,73 @@
+name: Update & deploy
+
+on:
+  schedule:
+    # Every day at 07:23 UTC.
+    - cron: "23 7 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "data/**"
+      - "public/**"
+      - ".github/workflows/update.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install yt-dlp
+        run: pip install --upgrade yt-dlp
+
+      - name: Discover remixes
+        env:
+          SUNO_TOKEN: ${{ secrets.SUNO_TOKEN }}
+        run: python scripts/scrape.py
+
+      - name: Build site
+        run: python scripts/build.py
+
+      - name: Commit the dataset and generated site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/videos.json public
+          if git diff --staged --quiet; then
+            echo "No changes today."
+          else
+            git commit -m "chore: daily update $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

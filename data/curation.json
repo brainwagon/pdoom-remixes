@@ -1,0 +1,16 @@
+{
+  "seed_urls": [
+    "https://www.youtube.com/watch?v=uEB5E67vcPA",
+    "https://www.youtube.com/watch?v=86fZ50TysOg",
+    "https://www.youtube.com/watch?v=8j-hR4fJywU"
+  ],
+  "force_include": [],
+  "force_exclude": [
+    "youtube:1vTl7Hc8oa4"
+  ],
+  "kind_overrides": {
+    "youtube:uEB5E67vcPA": "original",
+    "youtube:86fZ50TysOg": "original",
+    "youtube:8j-hR4fJywU": "version"
+  }
+}

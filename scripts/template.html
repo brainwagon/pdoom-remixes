@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P(doom) Remixes — every version of "I'm Upping My P(doom)"</title>
+<meta name="description" content="A growing, append-only index of remixes, covers and versions of the song \"I'm Upping My P(doom)\". Updated daily.">
+<link rel="preconnect" href="https://i.ytimg.com">
+<style>
+  :root {
+    --bg: #0b0d12;
+    --panel: #14171f;
+    --panel-2: #1b1f29;
+    --line: #262b37;
+    --text: #e7e9ee;
+    --muted: #9aa3b2;
+    --accent: #7c5cff;
+    --accent-2: #ff5c8a;
+    --yt: #ff4d4d;
+    --sc: #ff7700;
+    --suno: #22c55e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.18), transparent 60%),
+      radial-gradient(900px 500px at 10% 0%, rgba(255,92,138,.12), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { padding: 56px 0 28px; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .18em; font-size: 12px;
+    color: var(--accent-2); font-weight: 700; margin: 0 0 10px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.02em; }
+  h1 .song { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { color: var(--muted); max-width: 70ch; margin: 0 0 18px; }
+  .lede a { color: var(--text); }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px 22px; color: var(--muted); font-size: 14px; }
+  .stats b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+  .controls {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 14px 0; margin: 8px 0 4px;
+    background: linear-gradient(var(--bg) 70%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .controls input, .controls select {
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 12px; font-size: 14px; outline: none;
+  }
+  .controls input { flex: 1 1 240px; min-width: 160px; }
+  .controls input:focus, .controls select:focus { border-color: var(--accent); }
+  .controls .spacer { flex: 1 1 auto; }
+  .count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+  h2.section { font-size: 15px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 34px 0 14px; font-weight: 700; }
+  h2.section span { color: var(--accent-2); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; padding-bottom: 40px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: #39404f; box-shadow: 0 14px 34px rgba(0,0,0,.45); }
+  .thumb { position: relative; display: block; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #1d2230, #2a1f3d); overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb .play {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 34px; color: rgba(255,255,255,.92); opacity: 0; transition: opacity .15s ease;
+    text-shadow: 0 2px 10px rgba(0,0,0,.7);
+  }
+  .card:hover .play { opacity: 1; }
+  .thumb .dur { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.78); padding: 2px 7px; border-radius: 6px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; font-weight: 700; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .badge.plat-youtube { color: var(--yt); border-color: rgba(255,77,77,.4); }
+  .badge.plat-soundcloud { color: var(--sc); border-color: rgba(255,119,0,.4); }
+  .badge.plat-suno { color: var(--suno); border-color: rgba(34,197,94,.4); }
+  .badge.kind-remix { color: #c4b5fd; }
+  .badge.kind-cover { color: #fca5a5; }
+  .badge.kind-version { color: #93c5fd; }
+  .badge.kind-original { color: #fcd34d; }
+  .title { font-size: 15.5px; line-height: 1.3; margin: 0; font-weight: 650; }
+  .title a { text-decoration: none; }
+  .title a:hover { text-decoration: underline; }
+  .channel { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .meta { margin: auto 0 0; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; color: #6f7889; font-size: 12px; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--muted); font-size: 13.5px; }
+  footer a { color: var(--text); }
+  footer p { max-width: 80ch; }
+  code { background: var(--panel-2); padding: 1px 5px; border-radius: 5px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">An append-only index</p>
+    <h1>Every version of <span class="song">__SONG_TITLE__</span></h1>
+    <p class="lede">
+      A growing collection of remixes, covers and alternate renditions of the song
+      <b>“__SONG_TITLE__”</b> (<a href="__SONG_URL__" target="_blank" rel="noopener">original</a>,
+      <a href="__ABOUT_URL__" target="_blank" rel="noopener">lyrics &amp; credits</a>).
+      New renditions are discovered automatically, and nothing is ever removed.
+    </p>
+    <div class="stats">
+      <span><b id="stat-remixes">__REMIX_COUNT__</b> in the list</span>
+      <span><b>__COUNT__</b> items total</span>
+      <span>last checked <b>__UPDATED__</b></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search title or channel…" aria-label="Search">
+    <select id="platform" aria-label="Platform">
+      <option value="">All platforms</option>
+      <option value="youtube">YouTube</option>
+      <option value="soundcloud">SoundCloud</option>
+      <option value="suno">Suno</option>
+    </select>
+    <select id="kind" aria-label="Type">
+      <option value="">All types</option>
+      <option value="remix">Remix</option>
+      <option value="cover">Cover</option>
+      <option value="version">Version</option>
+    </select>
+    <select id="sort" aria-label="Sort">
+      <option value="new">Newest first</option>
+      <option value="old">Oldest first</option>
+      <option value="az">Title A–Z</option>
+    </select>
+    <span class="count" id="visible"></span>
+  </div>
+
+  <h2 class="section">The originals</h2>
+  <div class="grid" id="originals">
+__ORIGINAL_CARDS__
+  </div>
+
+  <h2 class="section">Remixes, covers &amp; versions <span id="section-count"></span></h2>
+  <div class="grid" id="grid">
+__CARDS__
+  </div>
+  <p class="empty" id="empty" hidden>Nothing matches those filters.</p>
+
+  <footer>
+    <p>
+      <b>How this works.</b> A GitHub Action runs once a day, searches YouTube and SoundCloud
+      (and Suno when a token is configured), classifies each hit as a remix, cover, version or
+      merely a new music video for existing audio, and appends the genuine renditions here.
+      The dataset is <b>append-only</b>: once a video is listed it is never deleted, even if it
+      disappears from the search results or is pulled from the platform. The underlying data is
+      committed to the repository and mirrored at <a href="videos.json">videos.json</a>.
+    </p>
+    <p class="muted">
+      Not affiliated with the song's authors. Song and lyrics belong to their authors.
+    </p>
+  </footer>
+</div>
+
+<script>
+  window.PDOOM = __DATA_JSON__;
+  (function () {
+    var q = document.getElementById('q');
+    var platform = document.getElementById('platform');
+    var kind = document.getElementById('kind');
+    var sort = document.getElementById('sort');
+    var grid = document.getElementById('grid');
+    var visible = document.getElementById('visible');
+    var empty = document.getElementById('empty');
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+
+    function apply() {
+      var term = q.value.trim().toLowerCase();
+      var p = platform.value, k = kind.value;
+      var shown = 0;
+      cards.forEach(function (c) {
+        var ok = (!term || c.dataset.search.indexOf(term) !== -1)
+          && (!p || c.dataset.platform === p)
+          && (!k || c.dataset.kind === k);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+      visible.textContent = shown + ' shown';
+      empty.hidden = shown !== 0;
+      document.getElementById('section-count').textContent = '(' + shown + ')';
+    }
+
+    function sortCards() {
+      var mode = sort.value;
+      var arr = cards.slice();
+      if (mode === 'az') {
+        arr.sort(function (a, b) { return a.dataset.sortTitle.localeCompare(b.dataset.sortTitle); });
+      } else {
+        arr.sort(function (a, b) {
+          var cmp = (a.dataset.date || '').localeCompare(b.dataset.date || '');
+          return mode === 'new' ? -cmp : cmp;
+        });
+      }
+      arr.forEach(function (c) { grid.appendChild(c); });
+    }
+
+    [q, platform, kind].forEach(function (el) { el.addEventListener('input', apply); });
+    sort.addEventListener('change', function () { sortCards(); apply(); });
+    apply();
+  })();
+</script>
+</body>
+</html>
