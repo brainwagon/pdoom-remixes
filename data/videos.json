@@ -1,6 +1,21 @@
 {
   "videos": [
     {
+      "key": "youtube:VxzEM1dqgGs",
+      "platform": "youtube",
+      "id": "VxzEM1dqgGs",
+      "url": "https://www.youtube.com/watch?v=VxzEM1dqgGs",
+      "title": "I'm Lowering My P(Doom) (Disco Version) | Barbenheimer, but AI",
+      "channel": "Pratham",
+      "channel_url": "https://www.youtube.com/channel/UCg8yt_9S3LrBt9MpEdNoJqw",
+      "duration": 180,
+      "thumbnail": "https://i.ytimg.com/vi/VxzEM1dqgGs/hqdefault.jpg",
+      "views": 119,
+      "kind": "version",
+      "first_seen": "2026-10-06",
+      "last_seen": "2026-10-06"
+    },
+    {
       "key": "youtube:yz4u0ZWEVtQ",
       "platform": "youtube",
       "id": "yz4u0ZWEVtQ",
@@ -778,7 +793,7 @@
       "last_seen": "2026-10-06"
     }
   ],
-  "generated": "2026-10-06T08:06:38+00:00",
+  "generated": "2026-10-06T08:08:48+00:00",
   "song": {
     "title": "I'm Upping My P(doom)",
     "original": "https://www.youtube.com/watch?v=uEB5E67vcPA",
