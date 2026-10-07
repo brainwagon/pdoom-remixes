@@ -1,6 +1,66 @@
 {
   "videos": [
     {
+      "key": "youtube:vpu4tmhyj04",
+      "platform": "youtube",
+      "id": "vpu4tmhyj04",
+      "url": "https://www.youtube.com/watch?v=vpu4tmhyj04",
+      "title": "I’m Upping My P(HOP)",
+      "channel": "Paul Carver Tiffany III",
+      "channel_url": "https://www.youtube.com/channel/UCgDPAnyW11sq6L7BwWw_ObQ",
+      "duration": 180,
+      "thumbnail": "https://i.ytimg.com/vi/vpu4tmhyj04/hqdefault.jpg",
+      "views": 35,
+      "kind": "version",
+      "first_seen": "2026-10-07",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "key": "youtube:uQL822FYlKU",
+      "platform": "youtube",
+      "id": "uQL822FYlKU",
+      "url": "https://www.youtube.com/watch?v=uQL822FYlKU",
+      "title": "P(Doom) Song (Gemini Version)",
+      "channel": "Artificial Junk",
+      "channel_url": "https://www.youtube.com/channel/UCh1tNmJuqtt0IiijKeQX99w",
+      "duration": 214,
+      "thumbnail": "https://i.ytimg.com/vi/uQL822FYlKU/hqdefault.jpg",
+      "views": 12,
+      "kind": "version",
+      "first_seen": "2026-10-07",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "key": "youtube:M5Pxn-RsFLo",
+      "platform": "youtube",
+      "id": "M5Pxn-RsFLo",
+      "url": "https://www.youtube.com/watch?v=M5Pxn-RsFLo",
+      "title": "I'm Upping My P(Doom) - Claude Pop AI MV",
+      "channel": "Tech Ethics",
+      "channel_url": "https://www.youtube.com/channel/UCd_tLqJq4ByVRZp_xxqiG_Q",
+      "duration": 142,
+      "thumbnail": "https://i.ytimg.com/vi/M5Pxn-RsFLo/hqdefault.jpg",
+      "views": 1,
+      "kind": "version",
+      "first_seen": "2026-10-07",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "key": "youtube:EUePXToHxMs",
+      "platform": "youtube",
+      "id": "EUePXToHxMs",
+      "url": "https://www.youtube.com/watch?v=EUePXToHxMs",
+      "title": "I'm upping my P(Doom) - Hyperpop remix",
+      "channel": "NcG",
+      "channel_url": "https://www.youtube.com/channel/UCwEALChyp85Tear-FTGv8jg",
+      "duration": 146,
+      "thumbnail": "https://i.ytimg.com/vi/EUePXToHxMs/hqdefault.jpg",
+      "views": 14,
+      "kind": "remix",
+      "first_seen": "2026-10-07",
+      "last_seen": "2026-10-07"
+    },
+    {
       "key": "youtube:VxzEM1dqgGs",
       "platform": "youtube",
       "id": "VxzEM1dqgGs",
@@ -13,7 +73,7 @@
       "views": 119,
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:yz4u0ZWEVtQ",
@@ -31,7 +91,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:PETZenZnJ5E",
@@ -49,7 +109,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:CCZFr5V23uU",
@@ -67,7 +127,7 @@
       "tags": [],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:57YMkZrp0Bk",
@@ -85,7 +145,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:tBvkTMNp8OQ",
@@ -103,7 +163,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:lC4ef6LCR6o",
@@ -121,7 +181,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:hpRTSKNiBy0",
@@ -160,7 +220,7 @@
       ],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:_EDkTvIVlzU",
@@ -192,7 +252,7 @@
       ],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:M4Fc6uS_8Pg",
@@ -235,7 +295,7 @@
       ],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:JW3pMLFlwQc",
@@ -253,7 +313,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:t9-qtxXt49U",
@@ -271,7 +331,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:qbHPBMq0At8",
@@ -289,7 +349,7 @@
       "tags": [],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:lxwUIi_IHbg",
@@ -307,7 +367,7 @@
       "tags": [],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:xwS5wnEjL0E",
@@ -325,7 +385,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:qo0VLqA2Ay4",
@@ -343,7 +403,7 @@
       "tags": [],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:HBFYti9dk0Y",
@@ -363,7 +423,7 @@
       ],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:rZ0mY-bD5Xs",
@@ -381,7 +441,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:OIKMiGDLdIc",
@@ -399,7 +459,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:NK1WSvmmFHw",
@@ -417,7 +477,7 @@
       "tags": [],
       "kind": "remix",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:4ab4NCwbUa0",
@@ -435,7 +495,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:rMYc2YBwz9Q",
@@ -465,7 +525,7 @@
       ],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:0kYFj29PDmM",
@@ -486,7 +546,7 @@
       ],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:mGBc0LEkPu0",
@@ -504,7 +564,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:hzd0bJOpxZM",
@@ -522,7 +582,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:S3NF2OjeAEg",
@@ -540,7 +600,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:mv4U8TzcDfQ",
@@ -558,7 +618,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:6ipMhgRJ01k",
@@ -576,7 +636,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:tfWEFBvogug",
@@ -594,7 +654,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:Q3xTlg_Y6GA",
@@ -612,7 +672,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:Ns1N1L_qIw0",
@@ -630,7 +690,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "soundcloud:2406836103",
@@ -648,7 +708,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:WMlL9Cxx8gE",
@@ -666,7 +726,7 @@
       "tags": [],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:IV_glrNIyUk",
@@ -684,7 +744,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:8j-hR4fJywU",
@@ -707,7 +767,7 @@
       ],
       "kind": "version",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:2qUhX5K7qdo",
@@ -736,7 +796,7 @@
       ],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:wUmaS38Bhrs",
@@ -754,7 +814,7 @@
       "tags": [],
       "kind": "cover",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:86fZ50TysOg",
@@ -772,7 +832,7 @@
       "tags": [],
       "kind": "original",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     },
     {
       "key": "youtube:uEB5E67vcPA",
@@ -790,10 +850,10 @@
       "tags": [],
       "kind": "original",
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-06"
+      "last_seen": "2026-10-07"
     }
   ],
-  "generated": "2026-10-06T08:11:01+00:00",
+  "generated": "2026-10-07T14:37:06+00:00",
   "song": {
     "title": "I'm Upping My P(doom)",
     "original": "https://www.youtube.com/watch?v=uEB5E67vcPA",
